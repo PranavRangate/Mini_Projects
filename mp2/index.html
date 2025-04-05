@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Room Finder - Student Housing</title>
+    <link rel="stylesheet" href="Style.css">
+    <link rel="stylesheet" href="searchresults.html">
+    <!-- Add this in your HTML head section -->
+<!-- <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_GOOGLE_MAPS_API_KEY"></script> -->
+                <!-- Add Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Add in the head section -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+   <header>
+    <div class="section-navbar">
+        <div class="container grid grid-two-cols">
+            <div class="img">
+                <img src="img/room-finder-logo-removebg-preview.png" alt="Room Finder Logo">
+            </div>
+            <button class="menu-toggle">Menu</button>
+            <div class="navbar-links">
+                <ul class="nav">
+                    <li class="item"> <a class="nav-link" href="#home">Home</a></li>
+                    <li class="item"> <a class="nav-link" href="#about-section">About</a></li>
+                    <li class="item"> <a class="nav-link" href="#contact-section">Contact Us</a></li>
+                    <!-- <li class="item"> <a class="nav-link" href="##">Sign Up</a></li> -->
+                    <li class="item"> <a class="nav-link" href="##">Login</a></li>
+                </ul>
+            </div>
+        </div>
+       
+    </div>
+   </header>
+ <!--main section  -->
+<main class="hero-section" id="home">
+    <div class="container grid">
+        <div class="hero-content">
+            <h1 class="hero-heading">Focus on what's important and spend less on rent.</h1>
+            
+            <!-- Updated search section with dropdown -->
+            <div class="search-container">
+                <form class="search-form">
+                    <select class="location-dropdown" onchange="updateSearchInput(this.value)">
+                        <option value="">Select Location</option>
+                        <option value="Ichalkaranji">Ichalkaranji</option>
+                        <option value="Kolhapur">Kolhapur</option>
+                        <option value="Sangli">Sangli</option>
+                    </select>
+                    <input type="text" placeholder="Enter location, property type, or keywords..." class="search-input" id="searchInput">
+                    <button type="submit" class="search-button">Search</button>
+                </form>
+                
+                <!-- Added property type options -->
+                <div class="property-options">
+                    <div class="radio-group">
+                        <label>
+                            <input type="radio" name="propertyType" value="fullHouse" onchange="updateTypeDropdown('fullHouse')">
+                            Full House
+                        </label>
+                        <label>
+                            <input type="radio" name="propertyType" value="pgHostel" onchange="updateTypeDropdown('pgHostel')">
+                            PG/Hostel
+                        </label>
+                        <label>
+                            <input type="radio" name="propertyType" value="flatmates" onchange="updateTypeDropdown('flatmates')">
+                            Flatmates
+                        </label>
+                    </div>
+                    
+                    <select class="type-dropdown" id="typeDropdown">
+                        <option value="">Select Type</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Added Property Owner Section -->
+            <div class="property-owner-section">
+                <h2>Are you a Property Owner?</h2>
+                <a href="add_listings.html" class="post-property-btn">Post Free Property Ad</a>
+                <a href="listings.html" class="post-property-btn">Available Properties</a>
+            </div>
+        </div>
+
+    </div>
+</main>
+ <!-- main section end -->
+
+<!-- About Us Section -->
+<section class="about-section" id="about-section">
+    <div class="container">
+        <h2 class="section-title">About Us</h2>
+        <div class="about-content">
+            <h3>Finding Your Perfect Space Made Easy</h3>
+            <p>Room Finder is your trusted partner in finding the perfect accommodation. We understand the challenges of finding the right place to live, especially for students and young professionals.</p>
+            <div class="about-features">
+                <div class="feature">
+                    <i class="fas fa-shield-alt"></i>
+                    <h4>Verified Listings</h4>
+                    <p>All properties are verified for your safety</p>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-clock"></i>
+                    <h4>Quick Process</h4>
+                    <p>Find and book your room in minutes</p>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-hand-holding-heart"></i>
+                    <h4>24/7 Support</h4>
+                    <p>We're here to help anytime you need us</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Why Use Room Rental Section -->
+<section class="why-us-section" id="why-us-section">
+    <div class="container">
+        <h2 class="section-title">Why Choose Room Finder?</h2>
+        <div class="benefits-grid">
+            <div class="benefit-card">
+                <i class="fas fa-search"></i>
+                <h3>Easy Search</h3>
+                <p>Find your ideal room with our smart filters and search options</p>
+            </div>
+            <div class="benefit-card">
+                <i class="fas fa-rupee-sign"></i>
+                <h3>Best Prices</h3>
+                <p>Get the best deals and affordable rental options</p>
+            </div>
+            <div class="benefit-card">
+                <i class="fas fa-user-check"></i>
+                <h3>Verified Owners</h3>
+                <p>Connect with trusted and verified property owners</p>
+            </div>
+            <div class="benefit-card">
+                <i class="fas fa-map-marked-alt"></i>
+                <h3>Prime Locations</h3>
+                <p>Access properties in the best locations</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Customer Testimonials Section -->
+<section class="testimonials-section" id="testimonials-section">
+    <div class="container">
+        <h2 class="section-title">Our Customers Love Us</h2>
+        <div class="testimonials-grid">
+            <div class="testimonial-card">
+                <div class="testimonial-header">
+                    <img src="img/testimonials/user1.jpg" alt="User 1">
+                    <div class="user-info">
+                        <h4>John Doe</h4>
+                        <p>Student</p>
+                    </div>
+                </div>
+                <div class="rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <p class="testimonial-text">"Found my perfect student accommodation within days. The process was smooth and the support team was very helpful!"</p>
+            </div>
+
+            <div class="testimonial-card">
+                <div class="testimonial-header">
+                    <img src="img/testimonials/user2.jpg" alt="User 2">
+                    <div class="user-info">
+                        <h4>Jane Smith</h4>
+                        <p>Working Professional</p>
+                    </div>
+                </div>
+                <div class="rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                </div>
+                <p class="testimonial-text">"Great platform for finding reliable roommates and affordable housing. Highly recommended!"</p>
+            </div>
+
+            <div class="testimonial-card">
+                <div class="testimonial-header">
+                    <img src="img/testimonials/user3.jpg" alt="User 3">
+                    <div class="user-info">
+                        <h4>Mike Johnson</h4>
+                        <p>Property Owner</p>
+                    </div>
+                </div>
+                <div class="rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <p class="testimonial-text">"As a property owner, I love how easy it is to list and manage my properties. The response from potential tenants is amazing!"</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact-section">
+    <div class="container">
+        <h2 style="text-align: center;
+        font-size: 3.6rem;
+        margin-bottom: 5rem;
+        color: #2c3e50;">Contact Us</h2>
+        <div class="contact-grid">
+            <div class="contact-info">
+                <div class="info-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <div>
+                        <h3>Our Location</h3>
+                        <p>123 Room Finder Street, Boston, MA 02108</p>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-phone"></i>
+                    <div>
+                        <h3>Phone Number</h3>
+                        <p>+1 (555) 123-4567</p>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-envelope"></i>
+                    <div>
+                        <h3>Email Address</h3>
+                        <p>info@roomfinder.com</p>
+                    </div>
+                </div>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+            <div class="contact-form">
+                <form id="contactForm">
+                    <div class="form-group">
+                        <input type="text" id="contactName" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" id="contactEmail" placeholder="Your Email" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="contactSubject" placeholder="Subject" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea id="contactMessage" placeholder="Your Message" required></textarea>
+                    </div>
+                    <button type="submit">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer>
+    <div class="footer-container">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>About Room Finder</h3>
+                <p>Room Finder helps you find the perfect accommodation with ease. We connect property owners with potential tenants, making the house-hunting process simple and efficient.</p>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="search.html">Search Properties</a></li>
+                    <li><a href="list-property.html">List Property</a></li>
+                    <li><a href="#contact-section">Contact Us</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Connect With Us</h3>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Contact Info</h3>
+                <div class="contact-info">
+                    <p><i class="fas fa-phone"></i> +91 1234567890</p>
+                    <p><i class="fas fa-envelope"></i> info@roomfinder.com</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Kolhapur, Maharashtra, India</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2024 Room Finder. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+
+<!-- Back to Top Button -->
+<button id="backToTop" class="back-to-top">
+    <i class="fas fa-arrow-up"></i>
+</button>
+
+
+<script src="searchresults.js"></script>
+<!-- Add these before closing body tag -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+<script src="script.js"></script>
+<script src="contact.js"></script>
+</body>
+</html>
