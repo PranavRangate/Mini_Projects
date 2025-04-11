@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Property Listing</title>
+    <style>
+        .form-container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background: #f5f5f5;
+            border-radius: 8px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input, select, textarea {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .grid-columns {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+        .checkbox-group {
+            display: flex;
+            gap: 15px;
+        }
+        button {
+            background: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h1>Add New Property Listing</h1>
+        <form action="/api/listings" method="POST" enctype="multipart/form-data" id="listingForm">
+            <!-- Basic Information -->
+            <div class="form-group">
+                <label>Title*</label>
+                <input type="text" name="title" required>
+            </div>
+
+            <div class="form-group">
+                <label>Description*</label>
+                <textarea name="description" rows="4" required></textarea>
+            </div>
+
+            <div class="grid-columns">
+                <div class="form-group">
+                    <label>Property Type*</label>
+                    <select name="property_type" required>
+                        <option value="Apartment">Apartment</option>
+                        <option value="PG">PG</option>
+                        <option value="Hostel">Hostel</option>
+                        <option value="Independent House">Independent House</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>BHK Type*</label>
+                    <select name="bhk_type" required>
+                        <option value="1RK">1RK</option>
+                        <option value="1BHK">1BHK</option>
+                        <option value="2BHK">2BHK</option>
+                        <option value="3BHK">3BHK</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Pricing Section -->
+            <div class="grid-columns">
+                <div class="form-group">
+                    <label>Monthly Rent (₹)*</label>
+                    <input type="number" name="rent_price" min="0" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Security Deposit</label>
+                    <input type="number" name="deposit_amount" min="0">
+                </div>
+            </div>
+
+            <!-- Property Details -->
+            <div class="grid-columns">
+                <div class="form-group">
+                    <label>Furnishing*</label>
+                    <select name="furnishing" required>
+                        <option value="Fully Furnished">Fully Furnished</option>
+                        <option value="Semi-Furnished">Semi-Furnished</option>
+                        <option value="Unfurnished">Unfurnished</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Preferred Tenant*</label>
+                    <select name="preferred_tenant" required>
+                        <option value="Students">Students</option>
+                        <option value="Employees">Employees</option>
+                        <option value="Anyone">Anyone</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Capacity -->
+            <div class="grid-columns">
+                <div class="form-group">
+                    <label>Maximum Tenants*</label>
+                    <input type="number" name="max_tenants" min="1" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Bathrooms*</label>
+                    <input type="number" name="bathroom_count" min="1" required>
+                </div>
+            </div>
+
+            <!-- Amenities -->
+            <div class="form-group">
+                <label>Amenities</label>
+                <div class="checkbox-group">
+                    <label><input type="checkbox" name="amenities" value="Wi-Fi"> Wi-Fi</label>
+                    <label><input type="checkbox" name="amenities" value="AC"> AC</label>
+                    <label><input type="checkbox" name="amenities" value="Laundry"> Laundry</label>
+                    <label><input type="checkbox" name="amenities" value="Power Backup"> Power Backup</label>
+                </div>
+            </div>
+
+            <!-- Additional Features -->
+            <div class="grid-columns">
+                <div class="form-group">
+                    <label>Parking Availability*</label>
+                    <select name="parking_availability" required>
+                        <option value="Bike">Bike</option>
+                        <option value="Car">Car</option>
+                        <option value="Both">Both</option>
+                        <option value="None">None</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Available From*</label>
+                    <input type="date" name="available_from" required>
+                </div>
+            </div>
+
+            <!-- Address -->
+            <div class="form-group">
+                <label>Street Address*</label>
+                <input type="text" name="address[street]" required>
+            </div>
+
+            <div class="grid-columns">
+                <div class="form-group">
+                    <label>City*</label>
+                    <input type="text" name="address[city]" required>
+                </div>
+
+                <div class="form-group">
+                    <label>State*</label>
+                    <input type="text" name="address[state]" required>
+                </div>
+            </div>
+
+            <div class="grid-columns">
+                <div class="form-group">
+                    <label>Pincode*</label>
+                    <input type="text" name="address[pincode]" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Landmark</label>
+                    <input type="text" name="address[landmark]">
+                </div>
+            </div>
+
+            <!-- Location Coordinates -->
+            <div class="grid-columns">
+                <div class="form-group">
+                    <label>Latitude*</label>
+                    <input type="number" step="any" name="location[latitude]" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Longitude*</label>
+                    <input type="number" step="any" name="location[longitude]" required>
+                </div>
+            </div>
+
+            <!-- Contact Information -->
+            <div class="grid-columns">
+                <div class="form-group">
+                    <label>Contact Phone*</label>
+                    <input type="tel" name="contact_info[phone]" pattern="[0-9]{10}" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Contact Email*</label>
+                    <input type="email" name="contact_info[email]" required>
+                </div>
+            </div>
+
+            <!-- Images Upload -->
+            <div class="form-group">
+                <label>Property Images*</label>
+                <input type="file" name="property_images" accept="image/*" multiple required>
+            </div>
+
+            <button type="submit">submit</button>
+        </form>
+    </div>
+    <script src="add_listings.js"></script>
+    <script src="listings.js"></script>
+</body>
+</html>
