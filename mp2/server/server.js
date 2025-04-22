@@ -17,7 +17,7 @@ app.use((req, res, next) => {
     next();
 });
 
-const DB = 'mongodb+srv://pranav:Pranav231104@roomsdb.eftne.mongodb.net/RoomsDB?retryWrites=true&w=majority&appName=RoomsDB'
+const DB = 'mongodb+srv://user:Password@roomsdb.eftne.mongodb.net/RoomsDB?retryWrites=true&w=majority&appName=RoomsDB'
 
 mongoose.connect(DB)
     .then(() => {
